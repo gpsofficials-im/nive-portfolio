@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ===== BOOK-STYLE PORTFOLIO - PREMIUM THEME ===== */
 
 /* ===== CSS Variables ===== */
@@ -35,16 +36,32 @@
     /* Transitions */
     --transition-smooth: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-flip: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+=======
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+>>>>>>> 34c0ec4 (first commit)
 }
 
-/* ===== Reset & Base ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+  --bg: #020617;
+  --panel: rgba(255, 255, 255, 0.05);
+  --panel-strong: rgba(15, 23, 42, 0.78);
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --white: #ffffff;
+  --accent: #38bdf8;
+  --accent-soft: rgba(56, 189, 248, 0.12);
+  --border: rgba(255, 255, 255, 0.10);
+  --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  --radius-xl: 2rem;
+  --radius-lg: 1.25rem;
+  --max-width: 1200px;
 }
 
 html {
+<<<<<<< HEAD
     scroll-behavior: smooth;
     font-size: 16px;
 }
@@ -612,10 +629,291 @@ body {
     border-radius: 15px;
     font-size: 0.8rem;
     color: var(--ink-secondary);
+=======
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(14, 165, 233, 0.10), transparent 30%),
+    linear-gradient(135deg, #020617, #0f172a 45%, #082f49);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page {
+  min-height: 100vh;
+}
+
+.container {
+  width: min(100% - 2rem, var(--max-width));
+  margin: 0 auto;
+}
+
+.section {
+  padding: 3rem 0;
+}
+
+.section-compact {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.section-bottom {
+  padding-bottom: 5rem;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  padding: 5rem 0;
+}
+
+.hero-bg {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(70px);
+  opacity: 0.22;
+}
+
+.hero-bg-one {
+  width: 18rem;
+  height: 18rem;
+  left: -4rem;
+  top: -4rem;
+  background: #0ea5e9;
+}
+
+.hero-bg-two {
+  width: 20rem;
+  height: 20rem;
+  right: -4rem;
+  bottom: 0;
+  background: #22d3ee;
+}
+
+.hero-grid {
+  position: relative;
+  display: grid;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.badge {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  background: rgba(56, 189, 248, 0.10);
+  color: #7dd3fc;
+  font-size: 0.9rem;
+}
+
+.hero-role {
+  margin-top: 0.75rem;
+  color: #7dd3fc;
+  font-size: clamp(1.15rem, 2vw, 1.65rem);
+  font-weight: 600;
+}
+
+.hero-text {
+  max-width: 42rem;
+  margin-top: 1.5rem;
+  color: var(--text);
+  opacity: 0.9;
+  font-size: 1.02rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 1.3rem;
+  border-radius: 1.1rem;
+  font-weight: 700;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #082f49;
+  box-shadow: 0 14px 30px rgba(56, 189, 248, 0.20);
+}
+
+.btn-secondary {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.stats-grid,
+.contents-grid,
+.cert-grid,
+.contact-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.stats-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.stat-card,
+.card,
+.panel,
+.content-card,
+.cert-card,
+.contact-item,
+.timeline-card {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow);
+}
+
+.stat-card,
+.card,
+.panel,
+.contact-card {
+  border-radius: var(--radius-xl);
+}
+
+.stat-card,
+.content-card,
+.cert-card,
+.contact-item,
+.timeline-card {
+  padding: 1.35rem;
+}
+
+.panel,
+.card,
+.contact-card {
+  padding: 2rem;
+}
+
+.stat-card p:first-child,
+.section-label {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.78rem;
+}
+
+.stat-value {
+  margin-top: 0.4rem;
+  color: #7dd3fc;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.panel-header h2,
+.card h2,
+.contact-card h2 {
+  margin-top: 0.45rem;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.section-note,
+.muted {
+  color: var(--muted);
+}
+
+.contents-grid {
+  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.content-card {
+  border-radius: 1.25rem;
+  background: rgba(15, 23, 42, 0.82);
+}
+
+.content-index {
+  color: #7dd3fc;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.two-col,
+.split-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.bullet-list {
+  margin-top: 1.5rem;
+  padding-left: 1.2rem;
+}
+
+.bullet-list li,
+.experience-grid li {
+  margin-bottom: 0.7rem;
+  color: var(--text);
+}
+
+.info-list {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.info-list strong {
+  color: var(--white);
+}
+
+.highlight-card {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(56, 189, 248, 0.20);
+  background: rgba(56, 189, 248, 0.06);
+}
+
+.highlight-card h3,
+.timeline-card h3 {
+  color: #7dd3fc;
+  font-size: 1.6rem;
+  margin-bottom: 0.4rem;
+>>>>>>> 34c0ec4 (first commit)
 }
 
 /* ===== Certifications Page ===== */
 .cert-grid {
+<<<<<<< HEAD
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
@@ -1269,3 +1567,132 @@ body {
 .mb-30 {
     margin-bottom: 30px;
 }
+=======
+  margin-top: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.cert-card,
+.contact-item {
+  border-radius: 1.25rem;
+  background: rgba(15, 23, 42, 0.72);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.chip {
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: rgba(56, 189, 248, 0.10);
+  color: #bae6fd;
+  font-size: 0.92rem;
+}
+
+.project-stack {
+  margin-top: 1rem;
+  color: var(--text);
+}
+
+.timeline-card {
+  margin-top: 1.8rem;
+  border-radius: 1.5rem;
+  background: rgba(15, 23, 42, 0.75);
+}
+
+.timeline-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.date-pill {
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.experience-grid {
+  display: grid;
+  gap: 0.75rem 1.5rem;
+  margin-top: 1.5rem;
+  padding-left: 1.2rem;
+}
+
+.contact-card {
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.10), rgba(34, 211, 238, 0.05));
+}
+
+.contact-grid {
+  margin-top: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.contact-item .label {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.contact-item .value {
+  margin-top: 0.45rem;
+  font-weight: 600;
+}
+
+.footer {
+  margin-top: 2.5rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+.footer-title {
+  color: var(--white);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+@media (min-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+
+  .two-col {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .split-grid {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+
+  .experience-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    padding: 4rem 0;
+  }
+
+  .panel,
+  .card,
+  .contact-card {
+    padding: 1.4rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+}
+>>>>>>> 34c0ec4 (first commit)
