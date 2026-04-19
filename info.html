@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infosys Images | Nivetha G</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #ec4899;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            background: var(--card-bg);
+            padding: 2rem 5%;
+            text-align: center;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+            position: relative;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: var(--primary-color);
+            transform: translateY(-50%) translateX(-5px);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Slider Container */
+        .slider-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 5%;
+        }
+
+        .slider-container {
+            position: relative;
+            max-width: 900px;
+            width: 100%;
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            box-shadow: 0 25px 50px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Slider */
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            position: relative;
+        }
+
+        .slide img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            padding: 20px;
+        }
+
+        .slide-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.95), transparent);
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .slide:hover .slide-info {
+            transform: translateY(0);
+        }
+
+        .slide-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .slide-info p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Navigation Buttons */
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(99, 102, 241, 0.8);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-nav:hover {
+            background: var(--primary-color);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+        }
+
+        .slider-nav.prev {
+            left: 20px;
+        }
+
+        .slider-nav.next {
+            right: 20px;
+        }
+
+        /* Dots Indicator */
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .dot:hover {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .dot.active {
+            background: var(--primary-color);
+            border-color: white;
+            transform: scale(1.2);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: var(--gradient);
+            transition: width 0.1s linear;
+            z-index: 10;
+        }
+
+        /* Thumbnails */
+        .thumbnails {
+            display: flex;
+            gap: 10px;
+            padding: 15px;
+            background: rgba(15, 23, 42, 0.8);
+            overflow-x: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) var(--dark-bg);
+        }
+
+        .thumbnails::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .thumbnails::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+
+        .thumbnails::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        .thumbnail {
+            min-width: 80px;
+            height: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            opacity: 0.6;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .thumbnail.active {
+            border-color: var(--primary-color);
+            opacity: 1;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Controls */
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1rem;
+            background: var(--card-bg);
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .control-btn {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .control-btn:hover {
+            background: var(--gradient);
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+
+        .control-btn.active {
+            background: var(--gradient);
+            border-color: transparent;
+        }
+
+        /* Counter */
+        .slide-counter {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .slide-counter span {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        footer p {
+            color: var(--text-secondary);
+        }
+
+        footer .heart {
+            color: var(--accent-color);
+            animation: heartbeat 1.5s ease infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .back-btn {
+                position: static;
+                transform: none;
+                justify-content: center;
+                margin-bottom: 1rem;
+            }
+
+            .slider {
+                height: 350px;
+            }
+
+            .slider-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .slider-nav.prev {
+                left: 10px;
+            }
+
+            .slider-nav.next {
+                right: 10px;
+            }
+
+            .slide-info {
+                transform: translateY(0);
+                padding: 1rem;
+            }
+
+            .slide-info h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="certificates.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
+        </a>
+        <h1><i class="fas fa-images"></i> Certificate Gallery</h1>
+        <p>Browse through my professional certifications</p>
+    </header>
+
+    <!-- Slider Section -->
+    <section class="slider-section">
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slider-track" id="sliderTrack">
+                    <!-- Slides will be dynamically inserted -->
+                </div>
+
+                <!-- Navigation Buttons -->
+                <button class="slider-nav prev" onclick="prevSlide()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-nav next" onclick="nextSlide()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <!-- Dots Indicator -->
+                <div class="slider-dots" id="sliderDots"></div>
+
+                <!-- Progress Bar -->
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <!-- Thumbnails -->
+            <div class="thumbnails" id="thumbnails"></div>
+
+            <!-- Controls -->
+            <div class="slider-controls">
+                <button class="control-btn" id="playPauseBtn" onclick="toggleAutoPlay()">
+                    <i class="fas fa-play"></i> Play
+                </button>
+                <div class="slide-counter">
+                    <span id="currentSlide">1</span> / <span id="totalSlides">0</span>
+                </div>
+                <button class="control-btn" onclick="openFullscreen()">
+                    <i class="fas fa-expand"></i> Fullscreen
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Nivetha G. All rights reserved.</p>
+        <p>Built with <span class="heart">❤️</span> by Nivetha G</p>
+    </footer>
+
+    <script>
+        // Image data with paths
+        const images = [
+            {
+                src: '../info img/info (1).jpg',
+                title: 'Infosys Certificate 1',
+                description: 'Professional Certification'
+            },
+            {
+                src: '../info img/info (2).jpg',
+                title: 'Infosys Certificate 2',
+                description: 'Professional Certification'
+            },
+            {
+                src: '../info img/info (3).jpg',
+                title: 'Infosys Certificate 3',
+                description: 'Professional Certification'
+            },
+            {
+                src: '../info img/info (4).jpg',
+                title: 'Infosys Certificate 4',
+                description: 'Professional Certification'
+            },
+        ];
+
+        let currentIndex = 0;
+        let autoPlayInterval;
+        let isAutoPlaying = false;
+        let progressInterval;
+        const autoPlayDelay = 5000; // 5 seconds
+
+        // Initialize slider
+        function initSlider() {
+            const sliderTrack = document.getElementById('sliderTrack');
+            const sliderDots = document.getElementById('sliderDots');
+            const thumbnails = document.getElementById('thumbnails');
+            const totalSlides = document.getElementById('totalSlides');
+
+            // Create slides
+            images.forEach((image, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'slide';
+                slide.innerHTML = `
+                    <img src="${image.src}" alt="${image.title}" onerror="this.src='https://via.placeholder.com/800x500/1e293b/6366f1?text=${encodeURIComponent(image.title)}'">
+                    <div class="slide-info">
+                        <h3>${image.title}</h3>
+                        <p>${image.description}</p>
+                    </div>
+                `;
+                sliderTrack.appendChild(slide);
+
+                // Create dot
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                if (index === 0) dot.classList.add('active');
+                dot.onclick = () => goToSlide(index);
+                sliderDots.appendChild(dot);
+
+                // Create thumbnail
+                const thumbnail = document.createElement('div');
+                thumbnail.className = 'thumbnail';
+                if (index === 0) thumbnail.classList.add('active');
+                thumbnail.innerHTML = `<img src="${image.src}" alt="${image.title}" onerror="this.src='https://via.placeholder.com/80x60/1e293b/6366f1?text=${index + 1}'">`;
+                thumbnail.onclick = () => goToSlide(index);
+                thumbnails.appendChild(thumbnail);
+            });
+
+            totalSlides.textContent = images.length;
+            updateSlider();
+        }
+
+        // Update slider position
+        function updateSlider() {
+            const sliderTrack = document.getElementById('sliderTrack');
+            const dots = document.querySelectorAll('.dot');
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const currentSlideEl = document.getElementById('currentSlide');
+
+            sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+
+            thumbnails.forEach((thumb, index) => {
+                thumb.classList.toggle('active', index === currentIndex);
+            });
+
+            currentSlideEl.textContent = currentIndex + 1;
+
+            // Scroll thumbnail into view
+            thumbnails[currentIndex].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+
+        // Navigation functions
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateSlider();
+            resetProgressBar();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateSlider();
+            resetProgressBar();
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateSlider();
+            resetProgressBar();
+        }
+
+        // Auto-play functions
+        function toggleAutoPlay() {
+            const btn = document.getElementById('playPauseBtn');
+            isAutoPlaying = !isAutoPlaying;
+
+            if (isAutoPlaying) {
+                btn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+                btn.classList.add('active');
+                startAutoPlay();
+            } else {
+                btn.innerHTML = '<i class="fas fa-play"></i> Play';
+                btn.classList.remove('active');
+                stopAutoPlay();
+            }
+        }
+
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(nextSlide, autoPlayDelay);
+            startProgressBar();
+        }
+
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+            stopProgressBar();
+        }
+
+        // Progress bar
+        function startProgressBar() {
+            const progressBar = document.getElementById('progressBar');
+            let width = 0;
+            const increment = 100 / (autoPlayDelay / 100);
+
+            progressInterval = setInterval(() => {
+                width += increment;
+                if (width >= 100) width = 0;
+                progressBar.style.width = width + '%';
+            }, 100);
+        }
+
+        function stopProgressBar() {
+            clearInterval(progressInterval);
+            document.getElementById('progressBar').style.width = '0%';
+        }
+
+        function resetProgressBar() {
+            if (isAutoPlaying) {
+                stopProgressBar();
+                startProgressBar();
+            }
+        }
+
+        // Fullscreen
+        function openFullscreen() {
+            const slider = document.querySelector('.slider-container');
+            if (slider.requestFullscreen) {
+                slider.requestFullscreen();
+            } else if (slider.webkitRequestFullscreen) {
+                slider.webkitRequestFullscreen();
+            } else if (slider.msRequestFullscreen) {
+                slider.msRequestFullscreen();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === ' ') {
+                e.preventDefault();
+                toggleAutoPlay();
+            }
+        });
+
+        // Touch/swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        const slider = document.querySelector('.slider');
+
+        slider.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        slider.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        }
+
+        // Initialize on load
+        window.addEventListener('load', initSlider);
+    </script>
+</body>
+</html>

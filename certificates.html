@@ -293,6 +293,206 @@
             margin-right: 0.5rem;
         }
 
+        /* Gallery Modal */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            overflow: auto;
+        }
+
+        .gallery-modal.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .gallery-header {
+            width: 100%;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+        }
+
+        .gallery-title {
+            font-size: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gallery-close {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            padding: 0.5rem;
+        }
+
+        .gallery-close:hover {
+            color: var(--accent-color);
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1600px;
+            width: 100%;
+        }
+
+        .gallery-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item-info {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .gallery-item-title {
+            color: var(--text-primary);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-item-number {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Lightbox for full image view */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.98);
+            z-index: 1002;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(99, 102, 241, 0.8);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            padding: 1rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--primary-color);
+        }
+
+        .lightbox-prev {
+            left: 2rem;
+        }
+
+        .lightbox-next {
+            right: 2rem;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            color: var(--accent-color);
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-secondary);
+            font-size: 1rem;
+            background: var(--card-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .lightbox-nav {
+                font-size: 1.5rem;
+                padding: 0.75rem;
+            }
+
+            .lightbox-prev {
+                left: 1rem;
+            }
+
+            .lightbox-next {
+                right: 1rem;
+            }
+        }
+
         /* Stagger Animation Delays */
         .certificates-grid .cert-card:nth-child(1) { transition-delay: 0.1s; }
         .certificates-grid .cert-card:nth-child(2) { transition-delay: 0.2s; }
@@ -403,7 +603,15 @@
                         <span class="skill-tag">MySQL</span>
                         <span class="skill-tag">MongoDB</span>
                     </div>
-                    <a href="#" class="cert-btn"><i class="fas fa-eye"></i> View Certificate</a>
+                    <a href="../int%20img/GOKULPRASANTH%20intership_page-0001.jpg"
+                       class="cert-btn"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="View Full Stack Development Internship certificate"
+                       data-certificate="internship">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                        <span>View Certificate</span>
+                    </a>
                 </div>
             </div>
 
@@ -459,8 +667,14 @@
                         <span class="skill-tag">Programming Basics</span>
                         <span class="skill-tag">Data Structures</span>
                     </div>
-                    <a href="#" class="cert-btn">
-                        <i class="fas fa-eye"></i> View Certificate
+                    <a href="../int%20img/info%20(3).jpg"
+                       class="cert-btn"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="View Basics of Python certificate"
+                       data-certificate="basics-of-python">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                        <span>View Certificate</span>
                     </a>
                 </div>
             </div>
@@ -489,8 +703,14 @@
                         <span class="skill-tag">Classes & Objects</span>
                         <span class="skill-tag">Inheritance</span>
                     </div>
-                    <a href="#" class="cert-btn">
-                        <i class="fas fa-eye"></i> View Certificate
+                    <a href="../info%20img/info%20(2).jpg"
+                       class="cert-btn"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="View Object Oriented Programming using Python certificate"
+                       data-certificate="oop-python">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                        <span>View Certificate</span>
                     </a>
                 </div>
             </div>
@@ -519,9 +739,14 @@
                         <span class="skill-tag">Data Analysis</span>
                         <span class="skill-tag">Scikit-learn</span>
                     </div>
-                    <a href="#" class="cert-btn">
-                    <a href="#" class="cert-btn">
-                        <i class="fas fa-eye"></i> View Certificate         
+                     <a href="../info%20img/info%20(4).jpg"
+                       class="cert-btn"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="View Explore Machine Learning using Python certificate"
+                       data-certificate="ml-python">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                        <span>View Certificate</span>
                     </a>
                 </div>
             </div>
@@ -550,13 +775,93 @@
                         <span class="skill-tag">Database</span>
                         <span class="skill-tag">CRUD Operations</span>
                     </div>
-                    <a href="#" class="cert-btn">
-                        <i class="fas fa-eye"></i> View Certificate
+                    <a href="#"
+                        class="cert-btn"
+                        onclick="openGallery(event)"
+                        aria-label="View all 12 Database certificates">
+                        <i class="fas fa-images" aria-hidden="true"></i>
+                        <span>View All 12 Certificates</span>
+                    </a>
+                </div>
+            </div>
+
+         <!-- Certificate 7 -->
+            <div class="cert-card reveal">
+                <div class="cert-header">
+                    <div class="cert-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <span class="cert-badge">Programming</span>
+                </div>
+                <div class="cert-body">
+                    <h3>Object Oriented Programming using Python</h3>
+                    <p class="cert-issuer"><i class="fas fa-university"></i> Infosys</p>
+                    <p class="cert-date"><i class="fas fa-calendar-alt"></i> March 2025</p>
+                    <div class="cert-id">
+                        <i class="fas fa-id-card"></i> Infosys Certification
+                    </div>
+                    <p class="cert-description">
+                        Advanced Python certification focusing on OOP principles including classes, objects, inheritance, polymorphism, and encapsulation.
+                    </p>
+                    <div class="cert-skills">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">OOP</span>
+                        <span class="skill-tag">Classes & Objects</span>
+                        <span class="skill-tag">Inheritance</span>
+                    </div>
+                    <a href="../info%20img/info%20(1).jpg"
+                       class="cert-btn"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="View Object Oriented Programming using Python certificate"
+                       data-certificate="oop-python">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                        <span>View Certificate</span>
                     </a>
                 </div>
             </div>
         </div>
     </main>
+
+    <!-- DB Certificates Gallery Modal -->
+    <div id="dbGalleryModal" class="gallery-modal">
+        <div class="gallery-header">
+            <h2 class="gallery-title">Database Certificates</h2>
+            <button class="gallery-close" onclick="closeGallery()" aria-label="Close gallery">&times;</button>
+        </div>
+        <div class="gallery-container" id="galleryContainer">
+            <!-- Gallery items will be generated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Lightbox for full image view -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close lightbox">&times;</button>
+        <button class="lightbox-nav lightbox-prev" onclick="prevImage()" aria-label="Previous image">&#8249;</button>
+        <img id="lightboxImg" class="lightbox-img" src="" alt="Certificate">
+        <button class="lightbox-nav lightbox-next" onclick="nextImage()" aria-label="Next image">&#8250;</button>
+        <div class="lightbox-counter" id="lightboxCounter">1 / 12</div>
+    </div>
+
+    <!-- Project Report Gallery Modal -->
+    <div id="projectReportModal" class="gallery-modal">
+        <div class="gallery-header">
+            <h2 class="gallery-title">Project Report</h2>
+            <button class="gallery-close" onclick="closeProjectReportGallery()" aria-label="Close gallery">&times;</button>
+        </div>
+        <div class="gallery-container" id="projectReportContainer">
+            <!-- Gallery items will be generated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Project Report Lightbox -->
+    <div id="projectReportLightbox" class="lightbox">
+        <button class="lightbox-close" onclick="closeProjectReportLightbox()" aria-label="Close lightbox">&times;</button>
+        <button class="lightbox-nav lightbox-prev" onclick="prevProjectReportImage()" aria-label="Previous image">&#8249;</button>
+        <img id="projectReportLightboxImg" class="lightbox-img" src="" alt="Project Report Page">
+        <button class="lightbox-nav lightbox-next" onclick="nextProjectReportImage()" aria-label="Next image">&#8250;</button>
+        <div class="lightbox-counter" id="projectReportCounter">1 / 91</div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -579,6 +884,195 @@
         }
         window.addEventListener("scroll", reveal);
         reveal();
+
+        // DB Certificates Gallery
+        const dbCertificates = [
+            { id: 1, title: "Database Fundamentals", file: "DB 1_page-0001.jpg" },
+            { id: 2, title: "SQL Basics", file: "DB 2.jpg" },
+            { id: 3, title: "Advanced Queries", file: "DB 3.jpg" },
+            { id: 4, title: "Database Design", file: "DB 4.jpg" },
+            { id: 5, title: "Normalization", file: "DB 5.jpg" },
+            { id: 6, title: "Indexing & Optimization", file: "DB 6.jpg" },
+            { id: 7, title: "Transactions & ACID", file: "DB 7.jpg" },
+            { id: 8, title: "Stored Procedures", file: "DB 8.jpg" },
+            { id: 9, title: "Database Security", file: "DB 9.jpg" },
+            { id: 10, title: "Backup & Recovery", file: "DB 10.jpg" },
+            { id: 11, title: "NoSQL Concepts", file: "DB 11.jpg" },
+            { id: 12, title: "Database Administration", file: "DB 12.jpg" }
+        ];
+
+        let currentImageIndex = 0;
+
+        // Generate gallery items
+        function generateGallery() {
+            const container = document.getElementById('galleryContainer');
+            container.innerHTML = dbCertificates.map((cert, index) => `
+                <div class="gallery-item" onclick="openLightbox(${index})" role="button" tabindex="0" aria-label="View ${cert.title}">
+                    <img src="../DB%20img/${cert.file}" alt="${cert.title}" loading="lazy">
+                    <div class="gallery-item-info">
+                        <h3 class="gallery-item-title">${cert.title}</h3>
+                        <p class="gallery-item-number">Certificate ${cert.id} of 12</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Open gallery modal
+        function openGallery(event) {
+            event.preventDefault();
+            generateGallery();
+            document.getElementById('dbGalleryModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close gallery modal
+        function closeGallery() {
+            document.getElementById('dbGalleryModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Open lightbox
+        function openLightbox(index) {
+            currentImageIndex = index;
+            updateLightboxImage();
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        // Close lightbox
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // Update lightbox image
+        function updateLightboxImage() {
+            const cert = dbCertificates[currentImageIndex];
+            document.getElementById('lightboxImg').src = `../DB%20img/${cert.file}`;
+            document.getElementById('lightboxImg').alt = cert.title;
+            document.getElementById('lightboxCounter').textContent = `${currentImageIndex + 1} / ${dbCertificates.length}`;
+        }
+
+        // Navigate to previous image
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + dbCertificates.length) % dbCertificates.length;
+            updateLightboxImage();
+        }
+
+        // Navigate to next image
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % dbCertificates.length;
+            updateLightboxImage();
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') prevImage();
+                if (e.key === 'ArrowRight') nextImage();
+            }
+            if (document.getElementById('dbGalleryModal').classList.contains('active')) {
+                if (e.key === 'Escape') closeGallery();
+            }
+        });
+
+        // Close modals when clicking outside
+        document.getElementById('dbGalleryModal').addEventListener('click', function(e) {
+            if (e.target === this) closeGallery();
+        });
+
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+
+        // Project Report Gallery
+        const projectReportImages = Array.from({ length: 91 }, (_, i) => ({
+            id: i,
+            title: `Project Report Page ${i + 1}`,
+            file: `GOKUL PROJECT REPORT-images-${i}.jpg`
+        }));
+
+        let currentProjectReportIndex = 0;
+
+        // Generate Project Report gallery items
+        function generateProjectReportGallery() {
+            const container = document.getElementById('projectReportContainer');
+            container.innerHTML = projectReportImages.map((img, index) => `
+                <div class="gallery-item" onclick="openProjectReportLightbox(${index})" role="button" tabindex="0" aria-label="View ${img.title}">
+                    <img src="../GOKUL%20PROJECT%20REPORT-img/${img.file}" alt="${img.title}" loading="lazy">
+                    <div class="gallery-item-info">
+                        <h3 class="gallery-item-title">${img.title}</h3>
+                        <p class="gallery-item-number">Page ${img.id + 1} of 91</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Open Project Report gallery modal
+        function openProjectReportGallery(event) {
+            if (event) event.preventDefault();
+            generateProjectReportGallery();
+            document.getElementById('projectReportModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Project Report gallery modal
+        function closeProjectReportGallery() {
+            document.getElementById('projectReportModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Open Project Report lightbox
+        function openProjectReportLightbox(index) {
+            currentProjectReportIndex = index;
+            updateProjectReportLightboxImage();
+            document.getElementById('projectReportLightbox').classList.add('active');
+        }
+
+        // Close Project Report lightbox
+        function closeProjectReportLightbox() {
+            document.getElementById('projectReportLightbox').classList.remove('active');
+        }
+
+        // Update Project Report lightbox image
+        function updateProjectReportLightboxImage() {
+            const img = projectReportImages[currentProjectReportIndex];
+            document.getElementById('projectReportLightboxImg').src = `../GOKUL%20PROJECT%20REPORT-img/${img.file}`;
+            document.getElementById('projectReportLightboxImg').alt = img.title;
+            document.getElementById('projectReportCounter').textContent = `${currentProjectReportIndex + 1} / ${projectReportImages.length}`;
+        }
+
+        // Navigate to previous Project Report image
+        function prevProjectReportImage() {
+            currentProjectReportIndex = (currentProjectReportIndex - 1 + projectReportImages.length) % projectReportImages.length;
+            updateProjectReportLightboxImage();
+        }
+
+        // Navigate to next Project Report image
+        function nextProjectReportImage() {
+            currentProjectReportIndex = (currentProjectReportIndex + 1) % projectReportImages.length;
+            updateProjectReportLightboxImage();
+        }
+
+        // Keyboard navigation for Project Report
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('projectReportLightbox').classList.contains('active')) {
+                if (e.key === 'Escape') closeProjectReportLightbox();
+                if (e.key === 'ArrowLeft') prevProjectReportImage();
+                if (e.key === 'ArrowRight') nextProjectReportImage();
+            }
+            if (document.getElementById('projectReportModal').classList.contains('active')) {
+                if (e.key === 'Escape') closeProjectReportGallery();
+            }
+        });
+
+        // Close Project Report modals when clicking outside
+        document.getElementById('projectReportModal').addEventListener('click', function(e) {
+            if (e.target === this) closeProjectReportGallery();
+        });
+
+        document.getElementById('projectReportLightbox').addEventListener('click', function(e) {
+            if (e.target === this) closeProjectReportLightbox();
+        });
     </script>
 </body>
 </html>

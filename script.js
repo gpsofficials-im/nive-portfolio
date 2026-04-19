@@ -4,7 +4,7 @@
 // Stats Data
 const statsData = [
   { label: "Experience", value: "1+ Years" },
-  { label: "Skills", value: "5+" },
+  { label: "Skills", value: "8+" },
   { label: "Technologies", value: "5+" },
   { label: "Internship", value: "1" }
 ];
@@ -23,18 +23,17 @@ const contentsData = [
 
 // About Me Points
 const aboutData = [
-  "Undergraduate student",
-  "Strong organizational skills",
-  "Good time management",
-  "Knowledge in computer applications",
-  "Good communication skills",
-  "Interested in gaining practical experience",
-  "Ready to contribute to team success"
+  "Enthusiastic fresher with basic technical knowledge",
+  "Strong problem-solving skills",
+  "Quick learner with the ability to adapt to new environments",
+  "Experience with full-stack web applications",
+  "Knowledge of JavaScript frameworks and databases",
+  "Strong communication and teamwork skills"
 ];
 
 // Personal Information
 const personalData = [
-  { label: "Location", value: "Thirupathur, Tamil Nadu" },
+  { label: "Location", value: "Thirupathur, Tamil Nadu, India" },
   { label: "Email", value: "nivethanivetha2109@gmail.com" },
   { label: "Phone", value: "+91 6380431813" }
 ];
@@ -87,31 +86,30 @@ const certsData = [
 
 // Skills Data
 const skillsData = [
+  "C++",
+  "R",
   "Python",
-  "HTML",
+  "DBMS",
   "MongoDB",
-  "VS Code",
-  "Data Structures",
-  "Windows 11",
-  "OOP",
-  "Problem Solving"
+  "HTML",
+  "Windows 11"
 ];
 
 // Project Details
 const projectData = [
-  "Real-time human activity detection",
-  "CNN-based model implementation",
-  "Image preprocessing and data augmentation",
-  "Achieved 90%+ accuracy"
+  "Design and Implementation of Human Fitness Tracking System using CNN Algorithm",
+  "Real-time human activity detection using deep learning",
+  "Image preprocessing and data augmentation techniques",
+  "CNN-based model for accurate fitness tracking"
 ];
 
 // Experience Responsibilities
 const experienceData = [
-  "Built responsive full-stack web applications",
-  "Integrated REST APIs",
-  "Worked with MySQL and MongoDB databases",
-  "Improved API performance",
-  "Fixed bugs and optimized features"
+  "Collaborated with the development team to design and implement responsive web interfaces",
+  "Developed RESTful APIs using Express.js and managed data with MySQL and MongoDB",
+  "Participated in code reviews and debugging sessions",
+  "Contributed to 65% reduction in application bugs",
+  "Optimized application load times and enhanced user experience"
 ];
 
 // Contact Information
@@ -130,7 +128,7 @@ const contactData = [
   },
   { 
     label: "Location", 
-    value: "Thirupathur, Tamil Nadu", 
+    value: "Thirupathur, TN, India", 
     icon: "location-dot",
     link: "#"
   },

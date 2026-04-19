@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates Lists | Nivetha G</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #ec4899;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: var(--card-bg);
+            padding: 2rem 5%;
+            text-align: center;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+            position: relative;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: var(--primary-color);
+            transform: translateY(-50%) translateX(-5px);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Filter Buttons */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 5%;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.5rem;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--text-primary);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gradient);
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+
+        /* Gallery Grid */
+        .gallery-container {
+            padding: 0 5% 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Gallery Item */
+        .gallery-item {
+            position: relative;
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+        }
+
+        .gallery-item.reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+        }
+
+        .gallery-item.hidden {
+            display: none;
+        }
+
+        /* Certificate Preview */
+        .cert-preview {
+            height: 200px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-preview::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.03) 10px,
+                rgba(255, 255, 255, 0.03) 20px
+            );
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .cert-icon {
+            font-size: 4rem;
+            color: white;
+            z-index: 1;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .cert-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            backdrop-filter: blur(10px);
+            z-index: 1;
+        }
+
+        /* Gallery Info */
+        .gallery-info {
+            padding: 1.5rem;
+        }
+
+        .gallery-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .gallery-info .issuer {
+            color: var(--primary-color);
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .gallery-info .date {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-info .description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .view-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            background: var(--card-bg);
+            border-radius: 20px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            animation: lightboxIn 0.3s ease;
+        }
+
+        @keyframes lightboxIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .lightbox-close:hover {
+            background: var(--accent-color);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-header {
+            background: var(--gradient);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .lightbox-icon {
+            font-size: 5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .lightbox-body {
+            padding: 2rem;
+        }
+
+        .lightbox-body h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .lightbox-body .detail-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .lightbox-body .detail-row i {
+            color: var(--primary-color);
+            width: 20px;
+        }
+
+        .lightbox-body .cert-id {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 1rem 0;
+            color: var(--text-secondary);
+        }
+
+        .lightbox-body .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .lightbox-body .skill-tag {
+            background: rgba(99, 102, 241, 0.2);
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+        }
+
+        /* Stagger Animation */
+        .gallery-grid .gallery-item:nth-child(1) { transition-delay: 0.1s; }
+        .gallery-grid .gallery-item:nth-child(2) { transition-delay: 0.2s; }
+        .gallery-grid .gallery-item:nth-child(3) { transition-delay: 0.3s; }
+        .gallery-grid .gallery-item:nth-child(4) { transition-delay: 0.4s; }
+        .gallery-grid .gallery-item:nth-child(5) { transition-delay: 0.5s; }
+        .gallery-grid .gallery-item:nth-child(6) { transition-delay: 0.6s; }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        footer p {
+            color: var(--text-secondary);
+        }
+
+        footer .heart {
+            color: var(--accent-color);
+            animation: heartbeat 1.5s ease infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .back-btn {
+                position: static;
+                transform: none;
+                justify-content: center;
+                margin-bottom: 1rem;
+            }
+
+            .back-btn:hover {
+                transform: translateX(-5px);
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lightbox-content {
+                margin: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
+        </a>
+        <h1><i class="fas fa-images"></i> Certificate Gallery</h1>
+        <p>Browse through my professional certifications</p>
+    </header>
+
+    <!-- Filter Buttons -->
+    <div class="filter-container">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="internship">Internship</button>
+        <button class="filter-btn" data-filter="programming">Programming</button>
+        <button class="filter-btn" data-filter="database">Database</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-container">
+        <div class="gallery-grid">
+            <!-- Certificate 1 - Internship -->
+            <div class="gallery-item reveal" data-category="internship" onclick="openLightbox(0)">
+                <div class="cert-preview">
+                    <i class="fas fa-code cert-icon"></i>
+                    <span class="cert-badge">Internship</span>
+                </div>
+                <div class="gallery-info">
+                    <h3>Full Stack Development Internship</h3>
+                    <p class="issuer"><i class="fas fa-building"></i> Edu Tantr, Bengaluru</p>
+                    <p class="date"><i class="fas fa-calendar-alt"></i> May 2025 - June 2025</p>
+                    <p class="description">Intensive internship covering frontend, backend, and database management.</p>
+                    <span class="view-btn"><i class="fas fa-eye"></i> View Details</span>
+                </div>
+            </div>
+
+            <!-- Certificate 2 - Database -->
+            <div class="gallery-item reveal" data-category="database" onclick="openLightbox(1)">
+                <div class="cert-preview">
+                    <i class="fas fa-database cert-icon"></i>
+                    <span class="cert-badge">Oracle</span>
+                </div>
+                <div class="gallery-info">
+                    <h3>Oracle Certified Foundation Associate</h3>
+                    <p class="issuer"><i class="fas fa-university"></i> Oracle University</p>
+                    <p class="date"><i class="fas fa-calendar-alt"></i> August 2025</p>
+                    <p class="description">Foundational knowledge in Oracle technologies and database concepts.</p>
+                    <a href="info (1).jp" class="cert-btn"><i class="fas fa-eye"></i> View Certificate</a>
+                </div>
+                </div>
+            </div>
+
+            <!-- Certificate 3 - Programming -->
+            <div class="gallery-item reveal" data-category="programming" onclick="openLightbox(2)">
+                <div class="cert-preview">
+                    <i class="fab fa-python cert-icon"></i>
+                    <span class="cert-badge">Programming</span>
+                </div>
+                <div class="gallery-info">
+                    <h3>Basics of Python</h3>
+                    <p class="issuer"><i class="fas fa-university"></i> Infosys</p>
+                    <p class="date"><i class="fas fa-calendar-alt"></i> March 2025</p>
+                    <p class="description">Python fundamentals including syntax, data types, and control structures.</p>
+                    <a href="info (1).jp" class="cert-btn"><i class="fas fa-eye"></i> View Certificate</a>
+                </div>
+            </div>
+
+            <!-- Certificate 4 - Programming -->
+            <div class="gallery-item reveal" data-category="programming" onclick="openLightbox(3)">
+                <div class="cert-preview">
+                    <i class="fas fa-laptop-code cert-icon"></i>
+                    <span class="cert-badge">Programming</span>
+                </div>
+                <div class="gallery-info">
+                    <h3>Object Oriented Programming using Python</h3>
+                    <p class="issuer"><i class="fas fa-university"></i> Infosys</p>
+                    <p class="date"><i class="fas fa-calendar-alt"></i> March 2025</p>
+                    <p class="description">OOP principles including classes, inheritance, and polymorphism.</p>
+                    <span class="view-btn"><i class="fas fa-eye"></i> View Details</span>
+                </div>
+            </div>
+
+            <!-- Certificate 5 - Programming -->
+            <div class="gallery-item reveal" data-category="programming" onclick="openLightbox(4)">
+                <div class="cert-preview">
+                    <i class="fas fa-robot cert-icon"></i>
+                    <span class="cert-badge">AI/ML</span>
+                </div>
+                <div class="gallery-info">
+                    <h3>Explore Machine Learning using Python</h3>
+                    <p class="issuer"><i class="fas fa-university"></i> Infosys</p>
+                    <p class="date"><i class="fas fa-calendar-alt"></i> March 2025</p>
+                    <p class="description">Introduction to ML concepts, supervised learning, and algorithms.</p>
+                    <span class="view-btn"><i class="fas fa-eye"></i> View Details</span>
+                </div>
+            </div>
+
+            <!-- Certificate 6 - Database -->
+            <div class="gallery-item reveal" data-category="database" onclick="openLightbox(5)">
+                <div class="cert-preview">
+                    <i class="fas fa-leaf cert-icon"></i>
+                    <span class="cert-badge">Database</span>
+                </div>
+                <div class="gallery-info">
+                    <h3>Introduction to MongoDB for Students</h3>
+                    <p class="issuer"><i class="fas fa-university"></i> ICT Academy</p>
+                    <p class="date"><i class="fas fa-calendar-alt"></i> August 2024</p>
+                    <p class="description">NoSQL database fundamentals and document-oriented data model.</p>
+                    <span class="view-btn"><i class="fas fa-eye"></i> View Details</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+            <div class="lightbox-header">
+                <i class="fas fa-certificate lightbox-icon"></i>
+            </div>
+            <div class="lightbox-body" id="lightbox-body">
+                <!-- Content will be dynamically inserted -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Nivetha G. All rights reserved.</p>
+        <p>Built with <span class="heart">❤️</span> by Nivetha G</p>
+    </footer>
+
+    <script>
+        // Certificate Data
+        const certificates = [
+            {
+                title: "Full Stack Development Internship",
+                issuer: "Edu Tantr, Bengaluru",
+                date: "May 2025 - June 2025",
+                id: "Certificate of Completion",
+                description: "Completed intensive internship program covering full stack web development including frontend design, backend API development, and database management.",
+                skills: ["HTML", "CSS", "JavaScript", "Express.js", "MySQL", "MongoDB"],
+                icon: "fa-code",
+                category: "internship"
+            },
+            {
+                title: "Oracle Certified Foundation Associate",
+                issuer: "Oracle University",
+                date: "August 2025",
+                id: "Oracle Certification",
+                description: "Earned Oracle certification demonstrating foundational knowledge in Oracle technologies and database concepts.",
+                skills: ["Oracle DB", "SQL", "Database Design"],
+                icon: "fa-database",
+                category: "database"
+            },
+            {
+                title: "Basics of Python",
+                issuer: "Infosys",
+                date: "March 2025",
+                id: "Infosys Certification",
+                description: "Completed comprehensive Python programming fundamentals course covering syntax, data types, control structures, and basic programming concepts.",
+                skills: ["Python", "Programming Basics", "Data Structures"],
+                icon: "fa-python",
+                category: "programming"
+            },
+            {
+                title: "Object Oriented Programming using Python",
+                issuer: "Infosys",
+                date: "March 2025",
+                id: "Infosys Certification",
+                description: "Advanced Python certification focusing on OOP principles including classes, objects, inheritance, polymorphism, and encapsulation.",
+                skills: ["Python", "OOP", "Classes & Objects", "Inheritance"],
+                icon: "fa-laptop-code",
+                category: "programming"
+            },
+            {
+                title: "Explore Machine Learning using Python",
+                issuer: "Infosys",
+                date: "March 2025",
+                id: "Infosys Certification",
+                description: "Introduction to Machine Learning concepts using Python, covering supervised learning, data preprocessing, and basic ML algorithms.",
+                skills: ["Python", "Machine Learning", "Data Analysis", "Scikit-learn"],
+                icon: "fa-robot",
+                category: "programming"
+            },
+            {
+                title: "Introduction to MongoDB for Students",
+                issuer: "ICT Academy",
+                date: "August 2024",
+                id: "ICT Academy Certification",
+                description: "Foundational course on MongoDB NoSQL database covering document-oriented data model, CRUD operations, and basic database administration.",
+                skills: ["MongoDB", "NoSQL", "Database", "CRUD Operations"],
+                icon: "fa-leaf",
+                category: "database"
+            }
+        ];
+
+        // Filter Functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.classList.remove('hidden');
+                        setTimeout(() => {
+                            item.classList.add('reveal', 'active');
+                        }, 50);
+                    } else {
+                        item.classList.remove('reveal', 'active');
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Lightbox Functionality
+        function openLightbox(index) {
+            const cert = certificates[index];
+            const lightbox = document.getElementById('lightbox');
+            const lightboxBody = document.getElementById('lightbox-body');
+
+            lightboxBody.innerHTML = `
+                <h2>${cert.title}</h2>
+                <div class="detail-row">
+                    <i class="fas fa-building"></i>
+                    <span>${cert.issuer}</span>
+                </div>
+                <div class="detail-row">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>${cert.date}</span>
+                </div>
+                <div class="cert-id">
+                    <i class="fas fa-id-card"></i> ${cert.id}
+                </div>
+                <p>${cert.description}</p>
+                <div class="skills">
+                    ${cert.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                </div>
+            `;
+
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox on outside click
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                closeLightbox();
+            }
+        });
+
+        // Close lightbox on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+    </script>
+</body>
+</html>
