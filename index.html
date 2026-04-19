@@ -1,772 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nivetha G | Portfolio</title>
+  <title>Nivetha G | Video Editor & Full Stack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
-
 <body>
-<<<<<<< HEAD
-    <!-- Loading Screen -->
-    <div class="book-loader" id="bookLoader">
-        <div class="loader-content">
-            <div class="loader-book"></div>
-            <p class="loader-text">Opening the book...</p>
-        </div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="brand">Nivetha G</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
+  </header>
 
-    <!-- Book Cover -->
-    <div class="book-container" id="bookContainer">
-        <div class="book">
-            <div class="book-cover" id="bookCover">
-                <div class="cover-decoration"></div>
-                <div class="cover-content">
-                    <div class="cover-avatar">
-                        <span>NG</span>
-                    </div>
-                    <h1 class="cover-title">Nivetha G</h1>
-                    <p class="cover-subtitle">Video Editor & Full Stack Developer</p>
-                    <p class="cover-tagline">A journey through skills, projects, and achievements in the world of
-                        technology and creativity.</p>
-                </div>
-                <div class="cover-hint">
-                    <span>Click to open</span>
-                    <i class="fas fa-hand-pointer"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Close Book Button -->
-    <button class="close-book-btn" id="closeBookBtn">
-        <i class="fas fa-bookmark"></i>
-        <span>Back to Cover</span>
-    </button>
-
-    <!-- Book Navigation -->
-    <nav class="book-nav" id="bookNav">
-        <div class="book-nav-item active" data-page="0" data-title="Cover"></div>
-        <div class="book-nav-item" data-page="1" data-title="Contents"></div>
-        <div class="book-nav-item" data-page="2" data-title="About Me"></div>
-        <div class="book-nav-item" data-page="3" data-title="Education"></div>
-        <div class="book-nav-item" data-page="4" data-title="Certifications"></div>
-        <div class="book-nav-item" data-page="5" data-title="Skills"></div>
-        <div class="book-nav-item" data-page="6" data-title="Projects"></div>
-        <div class="book-nav-item" data-page="7" data-title="Experience"></div>
-        <div class="book-nav-item" data-page="8" data-title="Contact"></div>
-        <div class="book-nav-item" data-page="9" data-title="Thank You"></div>
-    </nav>
-
-    <!-- Pages Container -->
-    <div class="pages-container" id="pagesContainer">
-
-        <!-- Page 0: Cover (already shown as book cover) -->
-
-        <!-- Page 1: Table of Contents -->
-        <div class="page active" id="page1" data-page="1">
-            <div class="toc-page">
-                <h2 class="toc-title">Contents</h2>
-                <ul class="toc-list">
-                    <li class="toc-item" data-goto="2">
-                        <span class="chapter-num">01</span>
-                        <span class="chapter-title">About Me</span>
-                        <span class="page-num">02</span>
-                    </li>
-                    <li class="toc-item" data-goto="3">
-                        <span class="chapter-num">02</span>
-                        <span class="chapter-title">Education</span>
-                        <span class="page-num">04</span>
-                    </li>
-                    <li class="toc-item" data-goto="4">
-                        <span class="chapter-num">03</span>
-                        <span class="chapter-title">Certifications</span>
-                        <span class="page-num">06</span>
-                    </li>
-                    <li class="toc-item" data-goto="5">
-                        <span class="chapter-num">04</span>
-                        <span class="chapter-title">Skills & Expertise</span>
-                        <span class="page-num">08</span>
-                    </li>
-                    <li class="toc-item" data-goto="6">
-                        <span class="chapter-num">05</span>
-                        <span class="chapter-title">Projects</span>
-                        <span class="page-num">10</span>
-                    </li>
-                    <li class="toc-item" data-goto="7">
-                        <span class="chapter-num">06</span>
-                        <span class="chapter-title">Experience</span>
-                        <span class="page-num">12</span>
-                    </li>
-                    <li class="toc-item" data-goto="8">
-                        <span class="chapter-num">07</span>
-                        <span class="chapter-title">Contact</span>
-                        <span class="page-num">14</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="page-number">2</div>
-        </div>
-
-        <!-- Page 2: About Me -->
-        <div class="page" id="page2" data-page="2">
-            <div class="page-header">
-                <span class="chapter-number">Chapter 01</span>
-                <h2>About Me</h2>
-                <div class="decorative-line"></div>
-            </div>
-            <div class="page-content">
-                <div class="about-text">
-                    <p>Dedicated undergraduate student with strong organizational and time management skills. Proficient
-                        in computer applications and communication. Interested in gaining practical experience and
-                        contributing to team success through hard work and dedication.</p>
-                    <p>As a passionate developer and video editor, I constantly seek to learn new technologies and
-                        improve my skills. I believe in creating elegant solutions to complex problems and strive to
-                        deliver high-quality work in every project I undertake.</p>
-                </div>
-                <div class="about-details">
-                    <h3>Personal Information</h3>
-                    <div class="detail-item">
-                        <i class="fas fa-graduation-cap"></i>
-                        <span class="detail-text">Undergraduate Student</span>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span class="detail-text">Thirupathur, Tamil Nadu</span>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-envelope"></i>
-                        <span class="detail-text">nivethanivetha2109@gmail.com</span>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-phone"></i>
-                        <span class="detail-text">+91 6380431813</span>
-                    </div>
-                </div>
-            </div>
-            <div class="about-stats">
-                <div class="stat-box">
-                    <span class="stat-num">1+</span>
-                    <span class="stat-label">Years Experience</span>
-                </div>
-                <div class="stat-box">
-                    <span class="stat-num">5+</span>
-                    <span class="stat-label">Skills</span>
-                </div>
-                <div class="stat-box">
-                    <span class="stat-num">5+</span>
-                    <span class="stat-label">Technologies</span>
-                </div>
-                <div class="stat-box">
-                    <span class="stat-num">1</span>
-                    <span class="stat-label">Internship</span>
-                </div>
-            </div>
-            <div class="page-number">3</div>
-        </div>
-
-        <!-- Page 3: Education -->
-        <div class="page" id="page3" data-page="3">
-            <div class="page-header">
-                <span class="chapter-number">Chapter 02</span>
-                <h2>Education</h2>
-                <div class="decorative-line"></div>
-            </div>
-            <div class="education-timeline">
-                <div class="edu-entry">
-                    <h3>Bachelor of Science (B.Sc.) in Computer Science</h3>
-                    <span class="edu-year">July 2023 – Present</span>
-                    <p class="edu-college">Government Arts College, Tirupathur, Tamil Nadu</p>
-                    <p class="edu-affiliation">Affiliated to Thiruvalluvar University</p>
-                    <p class="edu-year" style="margin-top: 10px;">Expected Graduation: April 2026</p>
-                    <div class="coursework">
-                        <h4>Relevant Coursework</h4>
-                        <ul class="course-list">
-                            <li>Data Structures</li>
-                            <li>Web Development</li>
-                            <li>Database Systems</li>
-                            <li>Java</li>
-                            <li>HTML</li>
-                            <li>PHP</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="page-number">4</div>
-        </div>
-
-        <!-- Page 4: Certifications -->
-        <div class="page" id="page4" data-page="4">
-            <div class="page-header">
-                <span class="chapter-number">Chapter 03</span>
-                <h2>Certifications</h2>
-                <div class="decorative-line"></div>
-            </div>
-            <div class="cert-grid">
-                <div class="cert-entry">
-                    <h4>Internship Full Stack Development Certificate</h4>
-                    <p class="cert-issuer">Edu Tantr</p>
-                    <p class="cert-date">May 2025</p>
-                </div>
-                <div class="cert-entry">
-                    <h4>Oracle Certified Foundation Associate</h4>
-                    <p class="cert-issuer">Oracle University</p>
-                    <p class="cert-date">August 2025</p>
-                </div>
-                <div class="cert-entry">
-                    <h4>Basics of Python</h4>
-                    <p class="cert-issuer">Infosys</p>
-                    <p class="cert-date">March 2025</p>
-                </div>
-                <div class="cert-entry">
-                    <h4>Explore Machine Learning using Python</h4>
-                    <p class="cert-issuer">Infosys</p>
-                    <p class="cert-date">March 2025</p>
-                </div>
-                <div class="cert-entry">
-                    <h4>Object Oriented Programming using Python</h4>
-                    <p class="cert-issuer">Infosys</p>
-                    <p class="cert-date">March 2025</p>
-                </div>
-                <div class="cert-entry">
-                    <h4>Introduction to MongoDB for Students</h4>
-                    <p class="cert-issuer">ICT Academy</p>
-                    <p class="cert-date">August 2024</p>
-                </div>
-                <div class="cert-entry">
-                    <h4>Diploma in Computer Application</h4>
-                    <p class="cert-issuer">DCA</p>
-                    <p class="cert-date">-</p>
-                </div>
-            </div>
-            <div class="page-number">5</div>
-        </div>
-
-        <!-- Page 5: Skills -->
-        <div class="page" id="page5" data-page="5">
-            <div class="page-header">
-                <span class="chapter-number">Chapter 04</span>
-                <h2>Skills & Expertise</h2>
-                <div class="decorative-line"></div>
-            </div>
-            <div class="skills-section">
-                <h3>Technical Skills</h3>
-                <div class="skill-items">
-                    <div class="skill-item">
-                        <i class="fab fa-python"></i>
-                        <span>Python</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fab fa-html5"></i>
-                        <span>HTML</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fas fa-database"></i>
-                        <span>MongoDB</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fas fa-code"></i>
-                        <span>VS Code</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fas fa-code-branch"></i>
-                        <span>Data Structures</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fab fa-windows"></i>
-                        <span>Windows 11</span>
-                    </div>
-                </div>
-            </div>
-            <div class="skills-section">
-                <h3>Core Competencies</h3>
-                <div class="competencies">
-                    <div class="competency-tag">
-                        <i class="fas fa-cube"></i>
-                        <span>Object Oriented Programming</span>
-                    </div>
-                    <div class="competency-tag">
-                        <i class="fas fa-lightbulb"></i>
-                        <span>Problem Solving</span>
-                    </div>
-                </div>
-            </div>
-            <div class="page-number">6</div>
-        </div>
-
-        <!-- Page 6: Projects -->
-        <div class="page" id="page6" data-page="6">
-            <div class="page-header">
-                <span class="chapter-number">Chapter 05</span>
-                <h2>Projects</h2>
-                <div class="decorative-line"></div>
-            </div>
-            <div class="project-entry">
-                <h3>Human Fitness Monitoring System using CNN</h3>
-                <span class="project-tag">Deep Learning</span>
-                <p>Developed a real-time human activity detection system using Convolutional Neural Networks (CNN).
-                    Trained and tested the model using Python, TensorFlow, and OpenCV. Performed image preprocessing and
-                    data augmentation to improve model accuracy.</p>
-                <ul class="project-highlights">
-                    <li>Built a CNN-based deep learning model to detect and classify human fitness activities</li>
-                    <li>Used Python, TensorFlow, and OpenCV for training and real-time monitoring</li>
-                    <li>Achieved 90%+ accuracy in classifying fitness activities</li>
-                    <li>Achieved high classification accuracy through model optimization</li>
-                </ul>
-                <div class="tech-tags">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">TensorFlow</span>
-                    <span class="tech-tag">OpenCV</span>
-                    <span class="tech-tag">CNN</span>
-                </div>
-            </div>
-            <div class="page-number">7</div>
-        </div>
-
-        <!-- Page 7: Experience -->
-        <div class="page" id="page7" data-page="7">
-            <div class="page-header">
-                <span class="chapter-number">Chapter 06</span>
-                <h2>Experience</h2>
-                <div class="decorative-line"></div>
-            </div>
-            <div class="experience-timeline">
-                <div class="exp-entry">
-                    <span class="exp-date">May 2025 – June 2025</span>
-                    <h3>Full Stack Developer Intern</h3>
-                    <h4>EDU Tantr</h4>
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> Bengaluru</p>
-                    <ul class="exp-responsibilities">
-                        <li>Built responsive full-stack web applications</li>
-                        <li>Integrated REST APIs</li>
-                        <li>Designed MySQL and MongoDB databases</li>
-                        <li>Improved API performance</li>
-                        <li>Fixed application bugs</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="page-number">8</div>
-        </div>
-
-        <!-- Page 8: Contact -->
-        <div class="page" id="page8" data-page="8">
-            <div class="page-header">
-                <span class="chapter-number">Chapter 07</span>
-                <h2>Get In Touch</h2>
-                <div class="decorative-line"></div>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <div>
-                        <h4>Phone</h4>
-                        <a href="tel:6380431813">+91 6380431813</a>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <h4>Email</h4>
-                        <a href="mailto:nivethanivetha2109@gmail.com">nivethanivetha2109@gmail.com</a>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <h4>Location</h4>
-                        <p>Thirupathur, Tamil Nadu, India</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-linkedin-in"></i>
-                    <div>
-                        <h4>LinkedIn</h4>
-                        <a href="https://www.linkedin.com/in/nivetha-nivetha-5a3a42319/" target="_blank">Nivetha G</a>
-                    </div>
-                </div>
-            </div>
-            <div class="page-number">9</div>
-        </div>
-
-        <!-- Page 9: Thank You -->
-        <div class="page" id="page9" data-page="9">
-            <div class="thankyou-page">
-                <h2>Thank You</h2>
-                <div class="thankyou-decoration"></div>
-                <p>Thank you for taking the time to read through my portfolio. I hope it gives you a good understanding
-                    of my skills, projects, and aspirations.</p>
-                <p>I am always open to new opportunities, collaborations, and connections. Feel free to reach out to me
-                    through any of the channels mentioned in this book.</p>
-                <p>Looking forward to connecting with you!</p>
-                <div class="thankyou-decoration"></div>
-                <p style="font-family: var(--font-serif); font-style: italic; color: var(--accent-burgundy);">— Nivetha
-                    G</p>
-            </div>
-            <div class="page-number">10</div>
-        </div>
-
-        <!-- Page Navigation -->
-        <div class="page-navigation">
-            <button class="nav-btn" id="prevBtn" disabled>
-                <i class="fas fa-chevron-left"></i>
-                <span>Previous</span>
-            </button>
-            <span class="page-indicator" id="pageIndicator">Page 1 of 10</span>
-            <button class="nav-btn" id="nextBtn">
-                <span>Next</span>
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
-    </div>
-
-    <script>
-        // Book Portfolio JavaScript
-        document.addEventListener('DOMContentLoaded', function () {
-            // Elements
-            const bookLoader = document.getElementById('bookLoader');
-            const bookContainer = document.getElementById('bookContainer');
-            const bookCover = document.getElementById('bookCover');
-            const pagesContainer = document.getElementById('pagesContainer');
-            const closeBookBtn = document.getElementById('closeBookBtn');
-            const bookNav = document.getElementById('bookNav');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const pageIndicator = document.getElementById('pageIndicator');
-            const pages = document.querySelectorAll('.page');
-            const tocItems = document.querySelectorAll('.toc-item');
-            const navItems = document.querySelectorAll('.book-nav-item');
-
-            // State
-            let currentPage = 1;
-            const totalPages = 10;
-            let isBookOpen = false;
-
-            // Initialize - hide loader after a delay
-            setTimeout(() => {
-                bookLoader.classList.add('hidden');
-            }, 1500);
-
-            // Open book
-            function openBook() {
-                isBookOpen = true;
-                bookCover.classList.add('open');
-                pagesContainer.classList.add('active');
-                closeBookBtn.classList.add('visible');
-
-                // Update nav
-                updateNavItems(1);
-
-                setTimeout(() => {
-                    bookContainer.classList.add('hidden');
-                }, 1200);
-            }
-
-            // Close book (back to cover)
-            function closeBook() {
-                isBookOpen = false;
-                bookCover.classList.remove('open');
-                pagesContainer.classList.remove('active');
-                closeBookBtn.classList.remove('visible');
-                bookContainer.classList.remove('hidden');
-
-                // Reset to page 1
-                goToPage(1);
-            }
-
-            // Go to specific page
-            function goToPage(pageNum) {
-                if (pageNum < 1 || pageNum > totalPages) return;
-
-                const prevPage = currentPage;
-                currentPage = pageNum;
-
-                // Update pages
-                pages.forEach(page => {
-                    const pageData = parseInt(page.dataset.page);
-                    page.classList.remove('active', 'flipping-next', 'flipping-prev');
-
-                    if (pageData === currentPage) {
-                        page.classList.add('active');
-                    }
-                });
-
-                // Update navigation
-                updateNavItems(currentPage);
-                updatePageIndicator();
-                updateNavButtons();
-            }
-
-            // Navigate to next page
-            function nextPage() {
-                if (currentPage < totalPages) {
-                    const currentPageEl = document.querySelector(`.page[data-page="${currentPage}"]`);
-                    const nextPageEl = document.querySelector(`.page[data-page="${currentPage + 1}"]`);
-
-                    currentPageEl.classList.add('flipping-next');
-                    currentPageEl.classList.remove('active');
-
-                    setTimeout(() => {
-                        currentPageEl.classList.remove('flipping-next');
-                        currentPage++;
-                        nextPageEl.classList.add('active');
-                        updateNavItems(currentPage);
-                        updatePageIndicator();
-                        updateNavButtons();
-                    }, 400);
-                }
-            }
-
-            // Navigate to previous page
-            function prevPage() {
-                if (currentPage > 1) {
-                    const currentPageEl = document.querySelector(`.page[data-page="${currentPage}"]`);
-                    const prevPageEl = document.querySelector(`.page[data-page="${currentPage - 1}"]`);
-
-                    currentPageEl.classList.add('flipping-prev');
-                    currentPageEl.classList.remove('active');
-
-                    setTimeout(() => {
-                        currentPageEl.classList.remove('flipping-prev');
-                        currentPage--;
-                        prevPageEl.classList.add('active');
-                        updateNavItems(currentPage);
-                        updatePageIndicator();
-                        updateNavButtons();
-                    }, 400);
-                }
-            }
-
-            // Update navigation items
-            function updateNavItems(activePage) {
-                navItems.forEach(item => {
-                    const itemPage = parseInt(item.dataset.page);
-                    item.classList.remove('active');
-                    if (itemPage === activePage) {
-                        item.classList.add('active');
-                    }
-                });
-            }
-
-            // Update page indicator
-            function updatePageIndicator() {
-                pageIndicator.textContent = `Page ${currentPage} of ${totalPages}`;
-            }
-
-            // Update navigation buttons
-            function updateNavButtons() {
-                prevBtn.disabled = currentPage === 1;
-                nextBtn.disabled = currentPage === totalPages;
-            }
-
-            // Event Listeners
-            bookCover.addEventListener('click', openBook);
-            closeBookBtn.addEventListener('click', closeBook);
-            prevBtn.addEventListener('click', prevPage);
-            nextBtn.addEventListener('click', nextPage);
-
-            // Table of contents click
-            tocItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const targetPage = parseInt(item.dataset.goto);
-                    goToPage(targetPage);
-                });
-            });
-
-            // Side navigation click
-            navItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const targetPage = parseInt(item.dataset.page);
-                    goToPage(targetPage);
-                });
-            });
-
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (!isBookOpen) return;
-
-                if (e.key === 'ArrowRight' || e.key === ' ') {
-                    e.preventDefault();
-                    nextPage();
-                } else if (e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    prevPage();
-                } else if (e.key === 'Escape') {
-                    closeBook();
-                }
-            });
-
-            // Touch swipe support for mobile
-            let touchStartX = 0;
-            let touchEndX = 0;
-
-            pagesContainer.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            }, { passive: true });
-
-            pagesContainer.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-            }, { passive: true });
-
-            function handleSwipe() {
-                const swipeThreshold = 50;
-                const diff = touchStartX - touchEndX;
-
-                if (Math.abs(diff) > swipeThreshold) {
-                    if (diff > 0) {
-                        nextPage();
-                    } else {
-                        prevPage();
-                    }
-                }
-            }
-        });
-    </script>
-=======
-  <div class="page">
-    <section class="hero">
-      <div class="hero-bg hero-bg-one"></div>
-      <div class="hero-bg hero-bg-two"></div>
-
+  <main>
+    <section class="hero-section" id="home">
       <div class="container hero-grid">
-        <div class="hero-content">
-          <p class="badge">Portfolio Demo</p>
+        <div class="hero-copy">
+          <span class="eyebrow">Hello, I am</span>
           <h1>Nivetha G</h1>
-          <p class="hero-role">Video Editor & Full Stack Developer</p>
-          <p class="hero-text">
-            A passionate undergraduate student with skills in video editing,
-            full stack development, certifications, projects, and achievements,
-            presented in a premium and modern portfolio style.
-          </p>
-
+          <p class="hero-text">Video Editor & Full Stack Developer dedicated to building polished web experiences and efficient backend systems. I bring strong organization, communication, and a growth mindset to every project.</p>
           <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary">Contact Me</a>
-            <a href="#project" class="btn btn-secondary">View Project</a>
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="#contact">Contact Me</a>
           </div>
         </div>
-
-        <div class="stats-grid" id="statsGrid"></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="panel">
-          <div class="panel-header">
-            <div>
-              <p class="section-label">Contents</p>
-              <h2>Section Navigation</h2>
-            </div>
-            <p class="section-note">Modern portfolio layout demo</p>
-          </div>
-          <div class="contents-grid" id="contentsGrid"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="section section-compact">
-      <div class="container two-col">
-        <div class="card">
-          <p class="section-label">About Me</p>
-          <h2>Professional Summary</h2>
-          <ul class="bullet-list" id="aboutList"></ul>
-        </div>
-
-        <div class="card">
-          <p class="section-label">Personal Information</p>
-          <h2>Quick Details</h2>
-          <div class="info-list" id="personalInfo"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="education" class="section section-compact">
-      <div class="container">
-        <div class="card">
-          <p class="section-label">Education</p>
-          <h2>Academic Background</h2>
-          <div class="highlight-card">
-            <h3>B.Sc. Computer Science</h3>
-            <p>Government Arts College, Tirupathur, Tamil Nadu</p>
-            <p class="muted">Affiliated to Thiruvalluvar University</p>
-            <p>July 2023 – Present • Expected Graduation: April 2026</p>
-            <p>
-              Relevant Coursework: Data Structures, Web Development, Database
-              Systems, Java, HTML, PHP
-            </p>
+        <div class="hero-card">
+          <div class="hero-card-content">
+            <p><strong>Phone:</strong> 6380431813</p>
+            <p><strong>Email:</strong> <a href="mailto:nivethanivetha2109@gmail.com">nivethanivetha2109@gmail.com</a></p>
+            <p><strong>Location:</strong> Thirupathur, Tamil Nadu</p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nivetha-nivetha-5a3a42319/" target="_blank" rel="noreferrer">linkedin.com/in/nivetha-nivetha</a></p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="certifications" class="section section-compact">
-      <div class="container">
-        <div class="card">
-          <p class="section-label">Certifications</p>
-          <h2>Achievements & Learning</h2>
-          <div class="cert-grid" id="certGrid"></div>
-          <a href="certificates.html" class="btn btn-secondary" style="margin-top: 1.5rem;">View All Certificates</a>
-        </div>
+    <section class="section about-section" id="about">
+      <div class="container section-header">
+        <span class="section-label">About</span>
+        <h2>Professional Profile</h2>
+      </div>
+      <div class="container about-content">
+        <p>Dedicated undergraduate student with strong organizational and time management skills. Proficient in computer applications and communication, and eager to gain practical experience while contributing to team success through hard work.</p>
       </div>
     </section>
 
-    <section id="skills" class="section section-compact">
-      <div class="container split-grid">
-        <div class="card">
-          <p class="section-label">Skills & Expertise</p>
-          <h2>Core Strengths</h2>
-          <div class="chips" id="skillsChips"></div>
-        </div>
-
-        <div id="project" class="card">
-          <p class="section-label">Project Details</p>
-          <h2>Human Fitness Monitoring System using CNN</h2>
-          <p class="project-stack">Tech Stack: Python, TensorFlow, OpenCV, CNN</p>
-          <ul class="bullet-list" id="projectList"></ul>
-        </div>
+    <section class="section skills-section" id="skills">
+      <div class="container section-header">
+        <span class="section-label">Skills</span>
+        <h2>Technical & Core Skills</h2>
+      </div>
+      <div class="container skills-grid">
+        <article class="skill-card">
+          <h3>Technical Skills</h3>
+          <ul>
+            <li>Python</li>
+            <li>HTML</li>
+            <li>MongoDB</li>
+            <li>VS Code</li>
+            <li>Data Structures</li>
+            <li>Windows 11</li>
+          </ul>
+        </article>
+        <article class="skill-card">
+          <h3>Core Skills</h3>
+          <ul>
+            <li>Object Oriented Programming</li>
+            <li>Problem Solving</li>
+          </ul>
+        </article>
       </div>
     </section>
 
-    <section id="experience" class="section section-compact">
-      <div class="container">
-        <div class="card">
-          <p class="section-label">Experience</p>
-          <h2>Internship Timeline</h2>
-          <div class="timeline-card">
-            <div class="timeline-head">
-              <div>
-                <h3>Full Stack Developer Intern</h3>
-                <p>EDU Tantr • Bengaluru</p>
-              </div>
-              <span class="date-pill">May 2025 – June 2025</span>
-            </div>
-            <ul class="experience-grid" id="experienceList"></ul>
+    <section class="section experience-section" id="experience">
+      <div class="container section-header">
+        <span class="section-label">Experience</span>
+        <h2>Professional Experience</h2>
+      </div>
+      <div class="container timeline">
+        <article class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>Full Stack Developer Intern</h3>
+            <p class="timeline-meta">EDU Tantr • Bengaluru</p>
+            <p class="timeline-duration">May 2025 – June 2025</p>
+            <ul>
+              <li>Built 3+ full-stack web applications.</li>
+              <li>Integrated REST APIs and improved API performance by 30%.</li>
+              <li>Worked with MySQL & MongoDB.</li>
+              <li>Fixed 25+ bugs and implemented authentication systems.</li>
+              <li>Used Git & GitHub for code collaboration.</li>
+            </ul>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
-    <section id="contact" class="section section-compact section-bottom">
-      <div class="container">
+    <section class="section projects-section" id="projects">
+      <div class="container section-header">
+        <span class="section-label">Projects</span>
+        <h2>Featured Project</h2>
+      </div>
+      <div class="container project-card">
+        <h3>Human Fitness Monitoring System using CNN</h3>
+        <p>Built a deep learning model using CNN with Python, TensorFlow, and OpenCV for real-time activity detection. The system achieved over 90% accuracy through preprocessing, data augmentation, and model optimization.</p>
+      </div>
+    </section>
+
+    <section class="section education-section" id="education">
+      <div class="container section-header">
+        <span class="section-label">Education</span>
+        <h2>Academic Background</h2>
+      </div>
+      <div class="container info-grid">
+        <article class="info-card">
+          <h3>B.Sc. Computer Science</h3>
+          <p>Government Arts College, Tirupattur</p>
+          <p>Affiliated to Thiruvalluvar University</p>
+          <p>2023 – 2026</p>
+        </article>
+        <article class="info-card">
+          <h3>Relevant Coursework</h3>
+          <ul>
+            <li>Data Structures</li>
+            <li>Web Development</li>
+            <li>Database Systems</li>
+            <li>Java, HTML, PHP</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section certifications-section" id="certifications">
+      <div class="container section-header">
+        <span class="section-label">Certifications</span>
+        <h2>Professional Development</h2>
+      </div>
+      <div class="container certifications-grid">
+        <article class="certification-card">Diploma in Computer Application</article>
+        <article class="certification-card">Full Stack Internship - Edu Tantr (May 2025)</article>
+        <article class="certification-card">Oracle Certified Foundation Associate (Aug 2025)</article>
+        <article class="certification-card">Basics of Python - Infosys</article>
+        <article class="certification-card">Machine Learning with Python - Infosys</article>
+        <article class="certification-card">OOP using Python - Infosys</article>
+        <article class="certification-card">MongoDB - ICT Academy</article>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container section-header">
+        <span class="section-label">Contact</span>
+        <h2>Let's Connect</h2>
+      </div>
+      <div class="container contact-grid">
         <div class="contact-card">
-          <p class="section-label">Contact</p>
-          <h2>Let’s Connect</h2>
-          <div class="contact-grid" id="contactGrid"></div>
+          <h3>Email</h3>
+          <a href="mailto:nivethanivetha2109@gmail.com">nivethanivetha2109@gmail.com</a>
         </div>
-
-        <footer class="footer">
-          <p class="footer-title">Thank You</p>
-          <p>Built as a modern portfolio demo using a clean HTML, CSS, and JS structure.</p>
-        </footer>
+        <div class="contact-card">
+          <h3>Phone</h3>
+          <a href="tel:+916380431813">6380431813</a>
+        </div>
+        <div class="contact-card">
+          <h3>LinkedIn</h3>
+          <a href="https://www.linkedin.com/in/nivetha-nivetha-5a3a42319/" target="_blank" rel="noreferrer">linkedin.com/in/nivetha-nivetha</a>
+        </div>
       </div>
     </section>
-  </div>
+  </main>
 
-  <script src="script.js"></script>
->>>>>>> 34c0ec4 (first commit)
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Nivetha G. Built with clean responsive design.</p>
+      <p>Designed for clarity, accessibility, and professional presentation.</p>
+    </div>
+  </footer>
 </body>
-
 </html>
