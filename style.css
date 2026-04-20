@@ -439,7 +439,7 @@ select {
 @media (max-width: 720px) {
   .site-header,
   .site-footer {
-    padding: 0 0.5rem;
+    padding: 0 0.75rem;
   }
 
   .header-inner,
@@ -450,6 +450,16 @@ select {
 
   .site-nav {
     gap: 0.75rem;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .site-nav a {
+    flex: 1 1 45%;
+    text-align: center;
+    padding: 0.75rem 0.75rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
   }
 
   .hero-section {
@@ -466,6 +476,22 @@ select {
 
   .hero-actions {
     flex-direction: column;
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
+
+  .hero-card,
+  .hero-copy,
+  .skills-grid,
+  .info-grid,
+  .certifications-grid,
+  .contact-grid,
+  .projects-grid,
+  .about-content,
+  .timeline {
+    width: 100%;
   }
 
   .timeline {
